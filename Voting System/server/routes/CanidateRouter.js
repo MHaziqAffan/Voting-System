@@ -1,0 +1,10 @@
+const canidatecontroller=require("../controllers/canidatecontroller.js")
+const verifytoken=require("../controllers/middlewares/verifytoken.js")
+const express=require("express")
+const router=express.Router()
+router.get('/getallcanidates',canidatecontroller.getall)
+router.post('/addcanidate',verifytoken,canidatecontroller.addcanidate)
+router.patch('/approve/:id/:conid',verifytoken,canidatecontroller.approve)
+router.delete('/reject/:id/:conid',canidatecontroller.reject)
+router.get('/fetchcanidates/:id/:conid',canidatecontroller.fetchcanidates)
+module.exports=router
